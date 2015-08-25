@@ -19,6 +19,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'devise', '3.5.2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', '0.4.0', require: false
@@ -35,7 +37,8 @@ end
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
+  gem 'pg', '0.15.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -46,6 +49,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'rubocop', require: false
+  gem 'seed_dump'
 end
 
 group :production do

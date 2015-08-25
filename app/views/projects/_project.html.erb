@@ -1,0 +1,45 @@
+<table class="project_table" id=<%= "project_" + project.id.to_s%>>
+  <thead>
+    <tr>
+      <td><%= image_tag "note.png", alt: "note"%></td>
+      <td><%= project.name %></td>
+      <td></td>
+      <td><%= button_to "", project_path(project.id), id: "edit_btn", 
+                      method: :edit%></td>
+      <td><%= button_to "", project_path(project.id), id: "delete_btn", 
+                      method: :delete, data: { confirm: "Are you sure?" }, 
+                      remote: true%></td>
+
+    </tr>
+  </thead>
+
+  <tr class="new_task_row">
+    <td calss=""><%= image_tag "add_gr.png", alt: "add task"%></td>
+    <td>Start typing here to create a task…</td>
+    <td colspan="3">Add task</td>
+  </tr>
+<!--
+  <tr class="new_task_row">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+-->
+
+  <% project.tasks.each do |t| %>
+    <tr>
+      <td class="task_checkbox">
+        <%= check_box_tag 'accept' %>
+        </td>
+      <td class="task_text"><%= t.name%></td>
+      <td><%= button_to "", "#", id: "prio_task_btn", 
+                        method: :edit%></td>
+      <td><%= button_to "", "#", id: "edit_task_btn", 
+                        method: :edit%></td>
+      <td><%= button_to "", "#", id: "delete_task_btn", 
+                        method: :edit%></td>
+    </tr>
+  <% end %>
+</table>

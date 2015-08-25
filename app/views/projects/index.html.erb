@@ -1,0 +1,16 @@
+<h1>SIMPLE TODO LISTS</h1>
+<h2>FROM RUBY GARAGE</h2>
+
+<div id="project">
+  <% @projects.each do |p| %>
+    <%= render partial: 'project', locals: {project: p}%>
+  <% end %>
+
+  <div id="project_next"></div>
+</div>
+
+
+
+
+  <%= button_to "Add TODO List", new_project_path, id: "add_prj_btn",
+                method: "get", remote: true %>

@@ -8,29 +8,13 @@
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
+<%= render 'layouts/header' %>
 
-<h1 style="border-bottom: 1px solid">ToDo project</h1>
-<%= yield %>
+<div id="main_page">
+  <%= yield %>
+</div>
 
-<p style="border-top: 1px solid">
-  <h3>Already Done:</h3>
-  <ol>
-    <li>Upload an empty project to Heroku</li>
-  </ol>
-</p>
-
-<p>
-  <h3>Todo:</h3>
-  <ol>
-    <li>Upload an empty project to Heroku.</li>
-    <li>Create simple todo page this appropriate forms.</li>
-    <li>Build Model, View, Controller.</li>
-    <li>Add multi user support.</li>
-    <li>Add some javascript for interacting.</li>
-    <li>Add validation.</li>
-    <li>Add authentication.</li>
-  </ol>
-</p>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>

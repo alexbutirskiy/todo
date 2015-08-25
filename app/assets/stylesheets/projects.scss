@@ -1,0 +1,148 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin back_blue {
+  $blue-top: #5080BF;
+  $blue-bot: #33609B;
+  background: -webkit-linear-gradient($blue-top, $blue-bot); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(r$blue-top, $blue-bot); /*For Opera 11.1 to 12.0*/
+  background: -moz-linear-gradient($blue-top, $blue-bot); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($blue-top, $blue-bot); /* Standard syntax */
+}
+
+@mixin back_blue_sel {
+  background-color: #5D93D0;
+}
+
+@mixin small_btn ($picture){
+  background-image: url($picture);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  border: none;
+  width: 26px;
+  height: 26px;
+  opacity: 10%;
+  &:hover {
+    opacity: 80%;
+    background-position: 60% 60%;
+  }
+}
+
+#delete_btn {
+  @include small_btn("bin.png");
+}
+
+#edit_btn {
+  @include small_btn("pen.png");
+}
+
+#delete_task_btn {
+  @include small_btn("bin.png");
+  background-size: 55%;
+}
+
+#edit_task_btn {
+  @include small_btn("pen.png");
+  background-size: 55%;
+//border-left: 1px solid #CCCCCC; 
+}
+
+#prio_task_btn {
+  @include small_btn("priority.png");
+//border-right: 1px solid #CCCCCC; 
+}
+
+#project {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.project_table {
+  $radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 3em;
+  background: #FFFFFF;
+  min-width: 700px;
+  width: 90%;
+  //border: 1px solid;
+  -webkit-border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+
+
+  tr {
+    &:not(:first-child):hover  {
+      background-color: #FCFED5;
+    }
+
+    td {
+      height: 50px;
+      vertical-align: middle;
+      font: 13px Arial, Times, serif;
+      color: #999999;
+//border: 1px solid;
+    }
+    td:not:first-child {
+      border-top: 1px solid #E7EBEA;
+    }
+  }
+
+
+  thead {
+    @include back_blue;
+    td {
+      font: 18px Arial, Times, serif;
+      color: white;
+    }
+  }
+
+}
+
+.new_task_row {
+  background-color: #CDCDCD;
+  color: white;
+}
+
+.task_text {
+  text-align: left;
+  border-left: 1px solid #EFDADF;
+  padding-left: 15px;
+}
+
+.task_checkbox {
+  border-right: 1px solid #EFDADF;
+}
+
+
+
+#add_prj_btn {
+  @include back_blue_sel;
+  //background: #555;//linear-gradient(red, blue);
+  margin-left: auto;
+  margin-right: auto;
+  width: 209px;
+  height: 46px;
+  border: 1px solid #315589;
+  border-radius: 2px;
+  background-image: url("add_bl.png");
+  background-repeat: no-repeat;
+  background-position: 2.5% 50%;
+
+  font: bold 18px "Times New Roman", Times, serif;
+  color: white;
+  text-decoration: none;
+  text-vertical-align: center;
+
+  display: block;
+  &:hover {
+    border: 1px solid #000;
+    @include back_blue_sel;
+  }
+}

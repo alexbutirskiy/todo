@@ -1,3 +1,84 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: "Helvetica Neue", Helvetica, serif;
+  background-color: #D3B85A;
+
+  h1 {
+    font-size: 1.8125em;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 1.125em;
+  }
+
+  ul {
+    list-style-type: circle;
+    font-size: 18px;
+  }
+
+  li, p{
+    font-size: 16px;
+    text-align: left;
+  }
+
+  p {
+
+  }
+
+}
+#header {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #b0c4de;
+  height: 2.6em;
+  ul {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    li {
+      display: inline;
+
+      a {
+        margin: 0;
+        padding: 0.3em 1em 0.3em 1em;
+        font-weight: bold;
+        text-decoration: none;
+        &:hover {
+          background: #999;
+        }
+        &:active {
+          color: blue;
+          background: #888;
+        }
+      }
+    }
+  }
+}
+
+.to_left {
+  float: left;
+}
+
+.to_right {
+  float: right;
+}
+
+#main_page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  text-align: center;
+}
+
+#footer p{
+  margin-top: 2em;
+  padding-top: 0.5em;
+  text-align: center;
+  font-size: 1em;
+  color: #eee;
+  border-top: 1px solid #bbb;
+  font: bold 14px "Times New Roman", Times, serif;
+}
