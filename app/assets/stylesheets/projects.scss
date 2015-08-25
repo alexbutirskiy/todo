@@ -16,7 +16,7 @@
 }
 
 @mixin small_btn ($picture){
-  background-image: url($picture);
+  background-image: image-url($picture);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-color: transparent;
@@ -131,7 +131,7 @@
   height: 46px;
   border: 1px solid #315589;
   border-radius: 2px;
-  background-image: url("add_bl.png");
+  background-image: image-url("add_bl.png");
   background-repeat: no-repeat;
   background-position: 2.5% 50%;
 
