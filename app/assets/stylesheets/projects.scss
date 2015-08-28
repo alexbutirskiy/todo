@@ -34,7 +34,7 @@
   @include small_btn("bin.png");
 }
 
-#edit_btn {
+.edit_btn {
   @include small_btn("pen.png");
 }
 
@@ -76,7 +76,6 @@
   border-bottom-right-radius: $radius;
   border-bottom-left-radius: $radius;
 
-
   tr {
     &:not(:first-child):hover  {
       background-color: #FCFED5;
@@ -94,15 +93,35 @@
     }
   }
 
-
   thead {
     @include back_blue;
     td {
       font: 18px Arial, Times, serif;
       color: white;
     }
+    td:first-child {
+      width: 50px;
+    }
   }
+}
 
+.edit_project {
+  input[type=text] {
+      font: 18px Arial, Times, serif;
+      padding: 5px;
+      width: 100%;
+      color: white;
+      display: none;
+      @include back_blue;
+      //opacity: 0.5;
+      border: none;
+    }
+    label {
+      font: 20px Arial, Times, serif;
+      width: 100%;
+      color: white;
+      display: block;
+    }
 }
 
 .new_task_row {
@@ -146,3 +165,4 @@
     @include back_blue_sel;
   }
 }
+

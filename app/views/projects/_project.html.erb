@@ -2,10 +2,15 @@
   <thead>
     <tr>
       <td><%= image_tag "note.png", alt: "note"%></td>
-      <td><%= project.name %></td>
+      <td class="prj_name">
+        <%= form_for(project, remote: true) do |f| %>
+<!--TODO use <p> instead of label-->
+        <%= f.label "#{project.name}"%>
+        <%= f.text_field :name, class: "prj_name_text"%>
+        <% end %>
+      </td>
       <td></td>
-      <td><%= button_to "", project_path(project.id), id: "edit_btn", 
-                      method: :edit%></td>
+      <td><%= button_to "", "#", class: "edit_btn" %></td>
       <td><%= button_to "", project_path(project.id), id: "delete_btn", 
                       method: :delete, data: { confirm: "Are you sure?" }, 
                       remote: true%></td>
@@ -18,15 +23,7 @@
     <td>Start typing here to create a task…</td>
     <td colspan="3">Add task</td>
   </tr>
-<!--
-  <tr class="new_task_row">
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
--->
+
 
   <% project.tasks.each do |t| %>
     <tr>
@@ -43,3 +40,5 @@
     </tr>
   <% end %>
 </table>
+
+

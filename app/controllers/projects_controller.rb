@@ -12,7 +12,15 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_path }
       format.js {}
     end
+  end
 
+  # TODO: Check user and id and render error page if needed
+  def update
+    @project = Project.find(params[:id])
+    @project.update(name: (params[:project][:name]))
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   def destroy
