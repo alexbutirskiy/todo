@@ -1,9 +1,9 @@
 <div id="header">
   <ul>
     <div class="to_left">
-      <li> <%= link_to "About", root_path %> </li>
+      <li> <%= link_to "About", main_index_path %> </li>
       <% if user_signed_in? %>
-        <li> <%= link_to "My tasks", projects_path %> </li>
+        <li> <%= link_to "My tasks", root_path %> </li>
       <%end%>
     </div>
     <div class="to_right">

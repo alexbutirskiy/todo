@@ -10,7 +10,7 @@
         <% end %>
       </td>
       <td></td>
-      <td><%= button_to "", "#", class: "edit_btn" %></td>
+      <td><%= button_to "", "#", class: "prj_edit_btn" %></td>
       <td><%= button_to "", project_path(project.id), id: "delete_btn", 
                       method: :delete, data: { confirm: "Are you sure?" }, 
                       remote: true%></td>
@@ -19,9 +19,16 @@
   </thead>
 
   <tr class="new_task_row">
-    <td calss=""><%= image_tag "add_gr.png", alt: "add task"%></td>
-    <td>Start typing here to create a task…</td>
-    <td colspan="3">Add task</td>
+
+    <td><%= button_to "", "#", class: "plus_task_btn" %></td>
+
+    <td> 
+      <%= form_for([project, Task.new], remote: true, 
+                    html: {class: "new_task_form"}) do |f| %>
+        <%= f.text_field :name, value: "Start typing here to create a task…" %>
+      <% end %>
+    </td>
+    <td colspan="3"><%= button_to "Add task", "#", class: "add_task_btn" %></td>
   </tr>
 
 
@@ -31,12 +38,12 @@
         <%= check_box_tag 'accept' %>
         </td>
       <td class="task_text"><%= t.name%></td>
-      <td><%= button_to "", "#", id: "prio_task_btn", 
+      <td><%= button_to '', '#', id: 'prio_task_btn', 
                         method: :edit%></td>
-      <td><%= button_to "", "#", id: "edit_task_btn", 
+      <td><%= button_to '', '#', id: 'edit_task_btn', 
                         method: :edit%></td>
-      <td><%= button_to "", "#", id: "delete_task_btn", 
-                        method: :edit%></td>
+      <td><%= button_to '', [project, t], id: 'delete_task_btn', method: :delete,
+                         remote: true, data: { confirm: 'Are you sure?' }%></td>
     </tr>
   <% end %>
 </table>

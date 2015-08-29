@@ -6,6 +6,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, serif;
   background-color: #D3B85A;
 
+  cursor: pointer;
+
   h1 {
     font-size: 1.8125em;
     font-weight: bold;
@@ -15,8 +17,8 @@ body {
   }
 
   ul {
-    list-style-type: circle;
-    font-size: 18px;
+    list-style: none;
+    padding: 0px;
   }
 
   li, p{
@@ -27,10 +29,24 @@ body {
   p {
 
   }
-#my_id{
-  display: none;
-}
+  #about_page {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    ul, ol {
+      margin-top: 10px;
+      padding-left: 10px;
+      font-size: 18px;
+    }
 
+    ol {
+      list-style-type: decimal;
+    }
+    ul li:before {
+      content: '\2605 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0';
+      margin: 0 -20px;
+    }
+  }
 }
 #header {
   width: 100%;

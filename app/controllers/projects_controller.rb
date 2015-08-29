@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
 
-  def new
+  def create
     @new_prj = Project.create(name: "New Project", user_id:  current_user.id)
 
     respond_to do |format|

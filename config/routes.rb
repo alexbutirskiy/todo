@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'main#index'
+  root 'projects#index'
   get 'main/index'
-  resources :projects
+  resources :projects, only: [:create, :update, :destroy] do
+    resources :tasks, only: [:create, :update, :destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
