@@ -24,58 +24,9 @@
   background: linear-gradient($blue-top, $blue-bot); /* Standard syntax */
 }
 
-@mixin small_btn ($picture){
-  background-image: image-url($picture);
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-color: transparent;
-  border: none;
-  width: 26px;
-  height: 26px;
-  opacity: 10%;
-  &:hover {
-    //border: none;
-    opacity: 80%;
-    background-position: 60% 60%;
-  }
-}
-
-#delete_btn {
-  @include small_btn("bin.png");
-}
-
-.prj_edit_btn {
-  @include small_btn("pen.png");
-}
-
-.plus_task_btn {
-  @include small_btn("add_gr.png");
-    width: 30px;
-    height: 30px;
-}
-
-#delete_task_btn {
-  @include small_btn("bin.png");
-  background-size: 55%;
-}
-
-#edit_task_btn {
-  @include small_btn("pen.png");
-  background-size: 55%;
-//border-left: 1px solid #CCCCCC; 
-}
-
-#prio_task_btn {
-  @include small_btn("priority.png");
-//border-right: 1px solid #CCCCCC; 
-}
-
-#project {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
+/*******************************************************************************
+                              Main table
+*******************************************************************************/
 .project_table {
   $radius: 10px;
   margin-left: auto;
@@ -129,6 +80,9 @@
   }
 }
 
+/*******************************************************************************
+                              Header
+*******************************************************************************/
 .edit_project {
   input[type=text] {
       font: 18px Arial, Times, serif;
@@ -147,6 +101,9 @@
     }
 }
 
+/*******************************************************************************
+                              New Task row
+*******************************************************************************/
 .new_task_row {
   background-color: #CDCDCD;
   color: white;
@@ -179,14 +136,99 @@
   @include back_green;
 }
 
-.task_text {
-  text-align: left;
-  border-left: 1px solid #EFDADF;
-  padding-left: 15px;
-}
+
+/*******************************************************************************
+                              Task rows
+*******************************************************************************/
+// .task_text {
+//   text-align: left;
+//   border-left: 1px solid #EFDADF;
+//   padding-left: 15px;
+// }
 
 .task_checkbox {
   border-right: 1px solid #EFDADF;
+}
+
+.task_form {
+  heigth: 30px;
+  display: block;
+  input[type=text] {
+    width: 100%;
+    padding: 5px 0px 5px 10px;
+    border: none;
+    font: 14px Arial, Times, serif;
+    color: #BBBBBB;
+    background-color: inherit;
+    &:active {
+      border: none;
+      background-color: inherit;
+    }
+  }
+}
+
+.task_form_active {
+    color: #555555 !important;
+    outline: none;
+}
+
+.task_form_completed {
+  text-decoration: line-through;
+  color: #DDDDDD;
+}
+/*******************************************************************************
+                              Buttons
+*******************************************************************************/
+@mixin small_btn ($picture){
+  background-image: image-url($picture);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  border: none;
+  width: 26px;
+  height: 26px;
+  opacity: 10%;
+  &:hover {
+    //border: none;
+    opacity: 80%;
+    background-position: 60% 60%;
+  }
+}
+
+#delete_btn {
+  @include small_btn("bin.png");
+}
+
+.prj_edit_btn {
+  @include small_btn("pen.png");
+}
+
+.plus_task_btn {
+  @include small_btn("add_gr.png");
+    width: 30px;
+    height: 30px;
+}
+
+.delete_task_btn {
+  @include small_btn("bin.png");
+  background-size: 55%;
+}
+
+.edit_task_btn {
+  @include small_btn("pen.png");
+  background-size: 55%;
+//border-left: 1px solid #CCCCCC; 
+}
+
+.prio_task_btn {
+  @include small_btn("priority.png");
+//border-right: 1px solid #CCCCCC; 
+}
+
+#project {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 #add_prj_btn {

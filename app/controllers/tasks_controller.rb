@@ -10,8 +10,11 @@ class TasksController < ApplicationController
   end
 
   def update
-    byebug
-    puts
+    task = Task.find(params[:id])
+    task.name = params[:task][:name] if params[:task][:name]
+    task.status = params[:task][:status] if params[:task][:status]
+    task.save! if task.project_id == params[:project_id].to_i
+    render_project task.project_id
   end
 
   # TODO: check if task is valid

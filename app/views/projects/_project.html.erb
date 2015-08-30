@@ -33,18 +33,29 @@
 
 
   <% project.tasks.each do |t| %>
-    <tr>
-      <td class="task_checkbox">
-        <%= check_box_tag 'accept' %>
+    <% if t.status != 'completed' %>
+      <tr>
+        <td> 
+          <%= form_for([project, t], remote: true) do |f| %>
+            <%= f.check_box 'status', {class: "task_checkbox"}, "completed" %>
+          <% end %>
         </td>
-      <td class="task_text"><%= t.name%></td>
-      <td><%= button_to '', '#', id: 'prio_task_btn', 
-                        method: :edit%></td>
-      <td><%= button_to '', '#', id: 'edit_task_btn', 
-                        method: :edit%></td>
-      <td><%= button_to '', [project, t], id: 'delete_task_btn', method: :delete,
-                         remote: true, data: { confirm: 'Are you sure?' }%></td>
-    </tr>
+
+        <td> 
+          <%= form_for([project, t], remote: true, 
+                        html: {class: "task_form"}) do |f| %>
+            <%= f.text_field :name, disabled: true %>
+          <% end %>
+        </td>
+
+        <td><%= button_to '', '#', class: 'prio_task_btn', 
+                          method: :edit%></td>
+        <td><%= button_to '', '#', class: 'edit_task_btn', 
+                          method: :edit%></td>
+        <td><%= button_to '', [project, t], class: 'delete_task_btn', method: :delete,
+                           remote: true, data: { confirm: 'Are you sure?' }%></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 

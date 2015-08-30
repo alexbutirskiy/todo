@@ -60,6 +60,7 @@ $(document).on('keypress', '.edit_project', function(event){
 /******************************************************************************
                               Add task form
 ******************************************************************************/
+var task_name_not_ready = true;  //uses to prevent undefined task name create
 // Set focus at input and clear it's value
 function add_task_focus(env){
   var task_form = $(env).parents('tr').first().find('#task_name').val("")
@@ -72,6 +73,7 @@ function add_task_restore(){
   var task_form = $(document).find('.new_task_row').find('#task_name')
     .val("Start typing here to create a task…");
   task_form.removeClass('new_task_form_active');
+  task_name_not_ready = true;
 }
 
 function task_name_check(env) {
@@ -92,6 +94,7 @@ $(document).on('click', '.new_task_form', function(){
 })
 
 $(document).on('keypress', '.new_task_form', function(event){
+  task_name_not_ready = false;
   if(event.keyCode === KEY_CODE_ENTER) {
     return( task_name_check(this) );
   }
@@ -99,9 +102,46 @@ $(document).on('keypress', '.new_task_form', function(event){
 
 $(document).on('click', '.add_task_btn', function(){
   var form = $(this).parents('.new_task_row').find('.new_task_form');
-  if( task_name_check(form) != false) {
+  if( task_name_not_ready === false && task_name_check(form) != false) {
     form.submit();
   }
+  return false;
+})
+
+/******************************************************************************
+                              Task edit
+******************************************************************************/
+function edit_task_restore() {
+  var task_form = $(document).find('.task_form').find('#task_name');
+  task_form.prop('disabled', true);
+  task_form.removeClass('task_form_active');
+}
+
+function task_form_update(env) {
+  var task_form = $(env).parents('tr').first().find('#task_name');
+  if( env.checked ) {
+    task_form.addClass('task_form_completed');
+  } else {
+    task_form.removeClass('task_form_completed');
+  }
+}
+
+$(document).on('click', '.task_checkbox', function(){
+  task_form_update(this);
+  $(this).parents().first().submit();
+})
+
+$(document).on('click', '.edit_task_btn', function(){
+  var task_form = $(this).parents('tr').first().find('#task_name');
+  task_form.prop('disabled', false);
+  task_form.focus();
+  task_form.val( task_form.val() );       //set cursor to the end of string
+  task_form.addClass('task_form_active');
+  return false;
+})
+
+$(document).on('click', '.prio_task_btn', function(){
+
   return false;
 })
 
@@ -111,6 +151,7 @@ $(document).on('click', '.add_task_btn', function(){
 function esc(){
   prj_edit_hide();
   add_task_restore();
+  edit_task_restore();
 }
 
 // Process click outside to hide all forms
@@ -118,7 +159,7 @@ $(document).on('click', function(){
   esc();
 })
 
-// TODO: #main_page selector doesn't work
+// FIX: #main_page selector doesn't work
 $(document).on('keyup', '#main_page', function(event){
   if(event.keyCode === KEY_CODE_ESC){
     esc();
