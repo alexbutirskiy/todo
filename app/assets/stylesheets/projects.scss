@@ -164,6 +164,9 @@
       border: none;
       background-color: inherit;
     }
+    &:disabled {
+      color: #BBBBBB;
+    }
   }
 }
 
