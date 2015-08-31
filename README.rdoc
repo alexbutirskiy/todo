@@ -55,3 +55,34 @@ FROM tasks
 GROUP BY name
 HAVING (COUNT(name)>1)
 ORDER by name;
+
+-- 7. get the list of tasks having several exact matches of both name and status, from
+-- the project ‘Garage’. Order by matches count
+SELECT t.name, t.cnt
+FROM
+  (
+    SELECT tasks.name, status, project_id, COUNT(tasks.name) AS cnt 
+    FROM tasks
+    INNER JOIN projects
+    ON projects.id=tasks.project_id
+    WHERE projects.name = 'Garage'
+    GROUP BY tasks.name, status, project_id
+    HAVING (COUNT(tasks.name)>1)
+  ) t
+GROUP BY t.name, t.cnt
+ORDER BY t.cnt;
+
+-- 8. get the list of project names having more than 10 tasks in status ‘completed’. Order
+-- by project_id
+SELECT prj.name
+FROM
+(
+  SELECT projects.name, projects.id, COUNT (c.name) AS cnt
+  FROM projects
+  LEFT JOIN
+  ( SELECT * FROM tasks WHERE status='completed' ) c
+  ON projects.id=c.project_id
+  GROUP BY projects.id
+) prj
+WHERE cnt>10
+ORDER BY prj.id;
