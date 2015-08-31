@@ -145,9 +145,14 @@
 //   border-left: 1px solid #EFDADF;
 //   padding-left: 15px;
 // }
+.task_row {
+  td:first-child {
+    border-right: 1px solid #EFDADF;
+  }
+}
 
 .task_checkbox {
-  border-right: 1px solid #EFDADF;
+  
 }
 
 .task_form {
@@ -165,7 +170,7 @@
       background-color: inherit;
     }
     &:disabled {
-      color: #BBBBBB;
+      color: #999999;
     }
   }
 }

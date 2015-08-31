@@ -34,10 +34,10 @@
 
   <% project.tasks.each do |t| %>
     <% if t.status != 'completed' %>
-      <tr>
+      <tr class="task_row">
         <td> 
           <%= form_for([project, t], remote: true) do |f| %>
-            <%= f.check_box 'status', {class: "task_checkbox"}, "completed" %>
+            <%= f.check_box 'status', {class: 'task_checkbox'}, "completed" %>
           <% end %>
         </td>
 

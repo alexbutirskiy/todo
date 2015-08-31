@@ -1,5 +1,5 @@
 user = User.new
-user.email = 'butirskiy@gmail.com'
+user.email = 'user@exemple.com'
 user.password = 'password'
 user.password_confirmation = 'password'
 user.save!

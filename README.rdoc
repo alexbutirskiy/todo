@@ -1,27 +1,57 @@
-== README
+== Ruby Garage test TODO list and SQL task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+===SQL TASK
+-- Postgres
+CREATE TABLE projects (
+  id SERIAL PRIMARY KEY,
+  name varchar(255)
+);
 
-Things you may want to cover:
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  name varchar(255),
+  status varchar(255),
+  project_id int
+);
 
-* Ruby version
+-- 1. get all statuses, not repeating, alphabetically ordered
+SELECT DISTINCT status 
+FROM tasks 
+ORDER BY status ASC;
 
-* System dependencies
+-- 2. get the count of all tasks in each project, order by tasks count descending
+SELECT projects.name, COUNT(tasks.name) AS task_count
+FROM projects
+LEFT JOIN tasks
+ON tasks.project_id=projects.id
+GROUP BY projects.name
+ORDER BY task_count DESC;
 
-* Configuration
+-- 3. get the count of all tasks in each project, order by projects names
+SELECT projects.name, COUNT(tasks.name) AS task_count
+FROM projects
+INNER JOIN tasks
+ON tasks.project_id=projects.id
+GROUP BY projects.name
+ORDER BY projects.name;
 
-* Database creation
+-- 4. get the tasks for all projects having the name beginning with “N” letter
+SELECT * from tasks
+WHERE name LIKE 'N%';
 
-* Database initialization
+-- 5. get the list of all projects containing the ‘a’ letter in the middle of the name, and
+-- show the tasks count near each project. Mention that there can exist projects without 
+-- tasks and tasks with project_id=NULL
+SELECT projects.name, COUNT(tasks.name) AS task_count
+FROM projects
+LEFT JOIN tasks
+ON tasks.project_id=projects.id
+WHERE projects.name LIKE '_%a%_'
+GROUP BY projects.name;
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+-- 6. get the list of tasks with duplicate names. Order alphabetically
+SELECT name
+FROM tasks
+GROUP BY name
+HAVING (COUNT(name)>1)
+ORDER by name;
