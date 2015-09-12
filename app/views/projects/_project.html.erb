@@ -5,13 +5,14 @@
       <td class="prj_name">
         <%= form_for(project, remote: true) do |f| %>
 <!--TODO use <p> instead of label-->
-        <%= f.label "#{project.name}"%>
+        <%#= f.label "#{project.name}"%>
+        <%= content_tag :p, "#{project.name}"  %>
         <%= f.text_field :name, class: "prj_name_text"%>
         <% end %>
       </td>
       <td></td>
       <td><%= button_to "", "#", class: "prj_edit_btn" %></td>
-      <td><%= button_to "", project_path(project.id), id: "delete_btn", 
+      <td><%= button_to "", project_path(project.id), class: "delete_btn", 
                       method: :delete, data: { confirm: "Are you sure?" }, 
                       remote: true%></td>
 

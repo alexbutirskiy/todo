@@ -23,9 +23,11 @@ const KEY_CODE_ESC = 27;
 ******************************************************************************/
 // Enables form for project name editing
 $(document).on('click', '.prj_edit_btn', function(){
-  $(this).parents('tr').first().find('label').hide();
+  esc();
+  $(this).parents('tr').first().find('p').hide();
   $(this).parents('tr').first().find('#project_name').show();
-  $(this).parents('tr').first().find('#project_name').focus();
+  var inp = $(this).parents('tr').first().find('#project_name').focus();
+  inp.val( inp.val() );       //set cursor to the end of string
 
   // TODO: Handler is addded every time it clicks
   // Process click inside project name form to prevent it's hidding
@@ -37,16 +39,13 @@ $(document).on('click', '.prj_edit_btn', function(){
 
 // Hides edit project name form
 function prj_edit_hide() {
-  $(document).find('.prj_name').children().find('#project_name').hide();
-  $(document).find('.prj_name').children().find('label').show();
+  var prj = $(document).find('.prj_name').children();
+  $.each(prj, function() {
+    var inp = $(this).find('#project_name').hide();
+    var title = $(this).find('p').show();
+    inp.val(title.html());    // restores input value
+  })
 }
-
-// Process click inside project name form to prevent it's hidding
-// $(document).on('click', function(){
-//   $('.prj_name_text').click(function(){
-//     return false;
-//   })
-// })
 
 $(document).on('keypress', '.edit_project', function(event){
   if(event.keyCode === KEY_CODE_ENTER &&
@@ -83,17 +82,19 @@ function task_name_check(env) {
   }
 }
 
-$(document).on('click', '.plus_task_btn', function(){
+$(document).on('click', '.plus_task_btn', function() {
+  esc();
   add_task_focus(this);
   return false;
 })
 
-$(document).on('click', '.new_task_form', function(){
+$(document).on('click', '.new_task_form', function() {
+  esc();
   add_task_focus(this);
   return false;
 })
 
-$(document).on('keypress', '.new_task_form', function(event){
+$(document).on('keypress', '.new_task_form', function(event) {
   task_name_not_ready = false;
   if(event.keyCode === KEY_CODE_ENTER) {
     return( task_name_check(this) );
@@ -105,6 +106,7 @@ $(document).on('click', '.add_task_btn', function(){
   if( task_name_not_ready === false && task_name_check(form) != false) {
     form.submit();
   }
+  add_task_restore();
   return false;
 })
 
