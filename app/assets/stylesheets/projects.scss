@@ -204,106 +204,106 @@
   }
 }
 
-// .delete_btn {
-//   @include small_btn("bin.png");
-// }
-
-// .prj_edit_btn {
-//   @include small_btn("pen.png");
-// }
-
-// .plus_task_btn {
-//   @include small_btn("add_gr.png");
-//     width: 30px;
-//     height: 30px;
-// }
-
-// .delete_task_btn {
-//   @include small_btn("bin.png");
-//   background-size: 55%;
-// }
-
-// .edit_task_btn {
-//   @include small_btn("pen.png");
-//   background-size: 55%;
-// //border-left: 1px solid #CCCCCC; 
-// }
-
-// .prio_task_btn {
-//   @include small_btn("priority.png");
-// //border-right: 1px solid #CCCCCC; 
-// }
-
-/******************* Sprite variant *******************************************/
-// http://spritegen.website-performance.org/
-@mixin stitches-sprite($x, $y, $width, $height) {
-    background-position: $x+1px $y+1px;
-    width: $width+2px;
-    height: $height+2px;
-    background-image: image-url("icons.png");
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border: none;
-    //display: block;
-    &:hover {
-      background-position: $x+2px $y+2px;
-    }
-}
-
-
-// .add_prj_btn {
-//     @include stitches-sprite(-5px, -5px, 24px, 24px);
-// }
-
-.plus_task_btn {
-    @include stitches-sprite(-39px, -5px, 24px, 24px);
-}
-
 .delete_btn {
-    @include stitches-sprite(-73px, -5px, 16px, 16px);
-}
-
-.delete_task_btn {
-    @include stitches-sprite(-73px, -5px, 16px, 16px);
-}
-
-.sprite-note {
-    @include stitches-sprite(-99px, -5px, 24px, 24px);
+  @include small_btn("bin.png");
 }
 
 .prj_edit_btn {
-    @include stitches-sprite(-133px, -5px, 16px, 16px);
+  @include small_btn("pen.png");
+}
+
+.plus_task_btn {
+  @include small_btn("add_gr.png");
+    width: 30px;
+    height: 30px;
+}
+
+.delete_task_btn {
+  @include small_btn("bin.png");
+  background-size: 55%;
 }
 
 .edit_task_btn {
-    @include stitches-sprite(-133px, -5px, 16px, 16px);
+  @include small_btn("pen.png");
+  background-size: 55%;
+//border-left: 1px solid #CCCCCC; 
 }
 
 .prio_task_btn {
-    @include stitches-sprite(-159px, -5px, 10px, 13px);
+  @include small_btn("priority.png");
+//border-right: 1px solid #CCCCCC; 
 }
 
-.add_prj_btn {
-  @include back_blue_sel;
-  //background: #555;//linear-gradient(red, blue);
-  margin-left: auto;
-  margin-right: auto;
-  width: 209px;
-  height: 46px;
-  border: 1px solid #315589;
-  border-radius: 2px;
-  background-image: image-url("add_bl.png");
-  background-repeat: no-repeat;
-  background-position: 2.5% 50%;
+// /******************* Sprite variant ****************************************/
+// // http://spritegen.website-performance.org/
+// @mixin stitches-sprite($x, $y, $width, $height) {
+//     background-position: $x+1px $y+1px;
+//     width: $width+2px;
+//     height: $height+2px;
+//     background-image: image-url("icons.png");
+//     background-repeat: no-repeat;
+//     background-color: transparent;
+//     border: none;
+//     //display: block;
+//     &:hover {
+//       background-position: $x+2px $y+2px;
+//     }
+// }
 
-  font: bold 18px "Times New Roman", Times, serif;
-  color: white;
-  text-decoration: none;
-  text-vertical-align: center;
 
-  display: block;
-  &:hover {
-    border: 1px solid #000;
-    @include back_blue_sel;
-  }
-}
+// // .add_prj_btn {
+// //     @include stitches-sprite(-5px, -5px, 24px, 24px);
+// // }
+
+// .plus_task_btn {
+//     @include stitches-sprite(-39px, -5px, 24px, 24px);
+// }
+
+// .delete_btn {
+//     @include stitches-sprite(-73px, -5px, 16px, 16px);
+// }
+
+// .delete_task_btn {
+//     @include stitches-sprite(-73px, -5px, 16px, 16px);
+// }
+
+// .sprite-note {
+//     @include stitches-sprite(-99px, -5px, 24px, 24px);
+// }
+
+// .prj_edit_btn {
+//     @include stitches-sprite(-133px, -5px, 16px, 16px);
+// }
+
+// .edit_task_btn {
+//     @include stitches-sprite(-133px, -5px, 16px, 16px);
+// }
+
+// .prio_task_btn {
+//     @include stitches-sprite(-159px, -5px, 10px, 13px);
+// }
+
+// .add_prj_btn {
+//   @include back_blue_sel;
+//   //background: #555;//linear-gradient(red, blue);
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 209px;
+//   height: 46px;
+//   border: 1px solid #315589;
+//   border-radius: 2px;
+//   background-image: image-url("add_bl.png");
+//   background-repeat: no-repeat;
+//   background-position: 2.5% 50%;
+
+//   font: bold 18px "Times New Roman", Times, serif;
+//   color: white;
+//   text-decoration: none;
+//   text-vertical-align: center;
+
+//   display: block;
+//   &:hover {
+//     border: 1px solid #000;
+//     @include back_blue_sel;
+//   }
+// }
