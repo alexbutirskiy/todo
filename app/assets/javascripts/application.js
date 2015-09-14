@@ -114,9 +114,14 @@ $(document).on('click', '.add_task_btn', function(){
                               Task edit
 ******************************************************************************/
 function edit_task_restore() {
-  var task_form = $(document).find('.task_form').find('#task_name');
-  task_form.prop('disabled', true);
-  task_form.removeClass('task_form_active');
+  // debugger;
+  if(task_name_edit) {
+    $(task_name_edit).submit();
+  } else {
+    var task_form = $(document).find('.task_form').find('#task_name');
+    task_form.prop('disabled', true);
+    task_form.removeClass('task_form_active');
+  }
 }
 
 function task_form_update(env) {
@@ -140,22 +145,40 @@ function set_sortable() {
 }
 
 $(document).on('click', '.task_checkbox', function(){
+  esc();
   task_form_update(this);
   $(this).parents().first().submit();
 })
 
 var task_name_store = '';
+var task_name_edit = null;
 $(document).on('click', '.edit_task_btn', function(){
+  esc();
   var task_form = $(this).parents('tr').first().find('#task_name');
   task_form.prop('disabled', false);
   task_form.focus();
   task_form.val( task_form.val() );       //set cursor to the end of string
+  task_name_store = task_form.val();
   task_form.addClass('task_form_active');
   return false;
 })
 
-$(document).on('click', '.prio_task_btn', function(){
+// Restores task name on ESCAPE enter
+$(document).on('keydown', '.task_form', function(event){
+  if(event.keyCode === KEY_CODE_ESC) {
+    $(this).find('#task_name').val( task_name_store );
+    task_name_edit = null;
+  } else {
+    task_name_edit = this;
+  }
+})
 
+$(document).on('submit', '.task_form', function(event){
+  task_name_edit = null;
+})
+
+$(document).on('click', '.prio_task_btn', function(){
+  esc();
   return false;
 })
 
