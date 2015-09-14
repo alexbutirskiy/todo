@@ -4,7 +4,15 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, serif;
-  background-color: #D3B85A;
+//  background-color: #D3B85A;
+
+// Taken from Sirchik
+  height: 100%;
+  background: -webkit-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:    -moz-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:     -ms-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:      -o-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background:         linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
 
   //cursor: pointer;
 
