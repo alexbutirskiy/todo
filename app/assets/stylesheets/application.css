@@ -12,5 +12,6 @@
  *
  *= require reset
  *= require_tree
+ *= require jquery-ui/sortable
  *= require_self
  */

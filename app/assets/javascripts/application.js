@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/sortable
 //= require turbolinks
 //= require_tree .
 
@@ -98,8 +99,7 @@ $(document).on('keypress', '.new_task_form', function(event) {
   task_name_not_ready = false;
   if(event.keyCode === KEY_CODE_ENTER) {
     return( task_name_check(this) );
-  }
-})
+  }})
 
 $(document).on('click', '.add_task_btn', function(){
   var form = $(this).parents('.new_task_row').find('.new_task_form');
@@ -128,6 +128,17 @@ function task_form_update(env) {
   }
 }
 
+function set_sortable() {
+  $(".sortable" ).sortable({
+    cancel: '',
+    placeholder: "task_placeholder",
+    update: function (event, ui) {
+      ui.item.find('#task_order').val( ui.item.index() )
+      ui.item.find('.task_order').submit();
+    }
+  }).disableSelection();
+}
+
 $(document).on('click', '.task_checkbox', function(){
   task_form_update(this);
   $(this).parents().first().submit();
@@ -146,6 +157,10 @@ $(document).on('click', '.prio_task_btn', function(){
 
   return false;
 })
+
+$(document).ready( function() {
+  set_sortable();
+});
 
 /******************************************************************************
                               Common

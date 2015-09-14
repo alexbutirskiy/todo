@@ -32,11 +32,14 @@
     <td colspan="3"><%= button_to "Add task", "#", class: "add_task_btn" %></td>
   </tr>
 
-
-  <% project.tasks.each do |t| %>
+  <tbody class="sortable">
+  <% project.tasks.order(priority: :asc).each do |t| %>
     <% if t.status != 'completed' %>
       <tr class="task_row">
         <td> 
+          <%= form_for([project, t], remote: true, html: {class: 'task_order'}) do |f| %>
+              <%= f.hidden_field :order, value: 0 %>
+          <% end %>
           <%= form_for([project, t], remote: true) do |f| %>
             <%= f.check_box 'status', {class: 'task_checkbox'}, "completed" %>
           <% end %>
@@ -58,6 +61,7 @@
       </tr>
     <% end %>
   <% end %>
+  </tbody>
 </table>
 
 
