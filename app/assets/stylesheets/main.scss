@@ -3,16 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  font-family: "Helvetica Neue", Helvetica, serif;
-//  background-color: #D3B85A;
+  $back_top: #B8BCB1 30%;
+  $back_center: #d1a31e 60%;
+  $back_bottom: #b75a0c 100%;
 
-// Taken from Sirchik
+  font-family: "Helvetica Neue", Helvetica, serif;
+
   height: 100%;
-  background: -webkit-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:    -moz-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:     -ms-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:      -o-linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
-  background:         linear-gradient( #d3cdc2 40%, #d1a31e 60%, #b75a0c 100%) fixed;
+  background: -webkit-linear-gradient($back_top, $back_center, $back_bottom) fixed;
+  background: -moz-linear-gradient($back_top, $back_center, $back_bottom) fixed;
+  background: -ms-linear-gradient($back_top, $back_center, $back_bottom) fixed;
+  background: -o-linear-gradient($back_top, $back_center, $back_bottom) fixed;
+  background: linear-gradient($back_top, $back_center, $back_bottom) fixed;
 
   //cursor: pointer;
 
@@ -34,9 +36,6 @@ body {
     text-align: left;
   }
 
-  p {
-
-  }
   #about_page {
     max-width: 600px;
     margin-left: auto;
@@ -109,10 +108,3 @@ body {
   border-top: 1px solid #bbb;
   font: bold 14px "Times New Roman", Times, serif;
 }
-
-// .draggable { 
-//   width: 150px; 
-//   height: 150px; 
-//   padding: 0.5em; 
-//   border: 5px solid;
-// }

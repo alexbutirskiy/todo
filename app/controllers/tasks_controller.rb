@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
+  before_action :find_task, only: [:update, :destroy]
+
   # TODO: check if project_id is valid
   def create
     task = Task.new
-    task.name = params[:task][:name]
+    task.name = task_para[:name] # params[:task][:name]
     task.project_id = params[:project_id]
     task.priority = task.project.tasks.count
     task.save!
@@ -10,25 +12,41 @@ class TasksController < ApplicationController
     render_project(task.project_id)
   end
 
+  # TODO: Fix Rubocop wornings
+  # Order is like a priority at present
   def update
-    task = Task.find(params[:id])
-    task.name = params[:task][:name] if params[:task][:name]
-    task.status = params[:task][:status] if params[:task][:status]
-    task.priority = params[:task][:order] if params[:task][:order]
-    task.save! if task.project_id == params[:project_id].to_i
-    prioritize(task) if params[:task][:order]
+    @task.name = task_para[:name] if task_para[:name]
+    @task.status = task_para[:status] if task_para[:status]
+    @task.priority = task_para[:order] if task_para[:order]
+    @task.save! if project_valid?
+    prioritize(@task) if task_para[:order]
 
-    render_project task.project_id
+    render_project @task.project_id
   end
 
   # TODO: check if task is valid
   def destroy
-    task = Task.find(params[:id])
-    task.destroy! if task.project_id == params[:project_id].to_i
-    render_project task.project_id
+    @task.destroy! if project_valid?
+    render_project @task.project_id
   end
 
   private
+
+  def find_task
+    @task = Task.find(params[:id])
+  end
+
+  def task_para
+    {
+      name: params[:task][:name],
+      status: params[:task][:status],
+      order: params[:task][:order]
+    }
+  end
+
+  def project_valid?
+    @task.project_id == params[:project_id].to_i
+  end
 
   def render_project(id)
     @project = Project.find(id)

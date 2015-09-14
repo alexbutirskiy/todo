@@ -144,6 +144,7 @@ $(document).on('click', '.task_checkbox', function(){
   $(this).parents().first().submit();
 })
 
+var task_name_store = '';
 $(document).on('click', '.edit_task_btn', function(){
   var task_form = $(this).parents('tr').first().find('#task_name');
   task_form.prop('disabled', false);
