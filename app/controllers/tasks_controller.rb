@@ -16,18 +16,7 @@ class TasksController < ApplicationController
     task.status = params[:task][:status] if params[:task][:status]
     task.priority = params[:task][:order] if params[:task][:order]
     task.save! if task.project_id == params[:project_id].to_i
-
-    if params[:task][:order]
-      prio = 0
-      Project.find(params[:project_id]).tasks.order(priority: :asc).each do |t|
-        if t.id != task.id
-          prio += 1 if prio == task.priority
-          t.priority = prio
-          t.save!
-          prio += 1
-        end
-      end
-    end
+    prioritize(task) if params[:task][:order]
 
     render_project task.project_id
   end
@@ -48,4 +37,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def prioritize(task)
+    prio = 0
+    task.project.tasks.order(priority: :asc).each do |t|
+      next if t.id == task.id || t.status == 'completed'
+      prio += 1 if prio == task.priority
+      t.priority = prio
+      t.save!
+      prio += 1
+    end
+  end
 end
