@@ -1,3 +1,4 @@
 // full path 'projects/project' is used bicause it's calling from task controller
 $("<%= '#project_' +  @project.id.to_s%>").html( "<%= j render partial: 'projects/project', locals: {project: @project}%>" );
 set_sortable();
+set_btn_hover();

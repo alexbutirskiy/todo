@@ -35,7 +35,6 @@
   background: #FFFFFF;
   min-width: 700px;
   width: 90%;
-//border: 1px solid;
   -webkit-border-bottom-right-radius: $radius;
   -webkit-border-bottom-left-radius: $radius;
   -moz-border-radius-bottomright: $radius;
@@ -63,19 +62,22 @@
   }
 
   tr {
-    &:not(:first-child):hover  {
-      background-color: #FCFED5;
-    }
-
     td {
       height: 50px;
       vertical-align: middle;
       font: 13px Arial, Times, serif;
       color: #999999;
-//border: 1px solid;
     }
-    td:not:first-child {
-      border-top: 1px solid #E7EBEA;
+  }
+
+  tbody {
+    tr {
+      &:hover  {
+        background-color: #FCFED5;
+      }
+    }
+    tr:not(:last-child) {
+      border-bottom: 1px solid #E7EBEA;
     }
   }
 }
@@ -142,14 +144,12 @@
 /*******************************************************************************
                               Task rows
 *******************************************************************************/
-// .task_text {
-//   text-align: left;
-//   border-left: 1px solid #EFDADF;
-//   padding-left: 15px;
-// }
 .task_row {
   td:first-child {
-    border-right: 1px solid #EFDADF;
+    border-right: 3px double #EFDADF;
+  }
+  td:nth-child(2) {
+    border-right: 1px solid #E7EBEA;
   }
 }
 
@@ -197,7 +197,7 @@
   opacity: 0.4;
 }
 .task_placeholder {
-  border: 1px solid #e0ffe0;
+  border: 2px solid #e0ffe0;
   background-color: #f0fff0;
 }
 /*******************************************************************************
@@ -241,17 +241,18 @@
 .edit_task_btn {
   @include small_btn("pen.png");
   background-size: 55%;
-//border-left: 1px solid #CCCCCC; 
 }
 
 .prio_task_btn {
   @include small_btn("priority.png");
-//border-right: 1px solid #CCCCCC; 
+}
+
+.task_edit_btn {
+  visibility: hidden;
 }
 
 .add_prj_btn {
   @include back_blue_sel;
-  //background: #555;//linear-gradient(red, blue);
   margin-left: auto;
   margin-right: auto;
   width: 209px;
@@ -274,7 +275,7 @@
   }
 }
 
-// /******************* Sprite variant ****************************************/
+// /******************* Sprites variant ****************************************/
 // // http://spritegen.website-performance.org/
 // @mixin stitches-sprite($x, $y, $width, $height) {
 //     background-position: $x+1px $y+1px;

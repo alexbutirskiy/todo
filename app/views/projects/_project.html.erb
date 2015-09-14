@@ -37,7 +37,8 @@
     <% if t.status != 'completed' %>
       <tr class="task_row">
         <td> 
-          <%= form_for([project, t], remote: true, html: {class: 'task_order'}) do |f| %>
+          <%= form_for( [project, t], remote: true, 
+                        html: {class: 'task_order'}) do |f| %>
               <%= f.hidden_field :order, value: 0 %>
           <% end %>
           <%= form_for([project, t], remote: true) do |f| %>
@@ -51,13 +52,13 @@
             <%= f.text_field :name, disabled: true %>
           <% end %>
         </td>
-
-        <td><%= button_to '', '#', class: 'prio_task_btn', 
+        <td><%= button_to '', '#', class: 'prio_task_btn task_edit_btn', 
                           method: :edit%></td>
-        <td><%= button_to '', '#', class: 'edit_task_btn', 
+        <td><%= button_to '', '#', class: 'edit_task_btn task_edit_btn', 
                           method: :edit%></td>
-        <td><%= button_to '', [project, t], class: 'delete_task_btn', method: :delete,
-                           remote: true, data: { confirm: 'Are you sure?' }%></td>
+        <td><%= button_to '', [project, t], class: 'delete_task_btn task_edit_btn', 
+                          method: :delete, remote: true, 
+                          data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   <% end %>

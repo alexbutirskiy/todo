@@ -186,6 +186,18 @@ $(document).ready( function() {
   set_sortable();
 });
 
+// Display buttons on hover
+function set_btn_hover() {
+  $('tr').hover(
+    function() { $(this).find('.task_edit_btn').css('visibility', 'visible'); },
+    function() { $(this).find('.task_edit_btn').css('visibility', 'hidden') }
+    );
+}
+
+$(document).ready( function() {
+  set_btn_hover();
+});
+
 /******************************************************************************
                               Common
 ******************************************************************************/
