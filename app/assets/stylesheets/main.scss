@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/******************************************************************************
+                            Common styles
+******************************************************************************/
 body {
   $back_top: #B8BCB1 30%;
   $back_center: #d1a31e 60%;
@@ -21,6 +24,7 @@ body {
   h1 {
     font-size: 1.8125em;
     font-weight: bold;
+    margin-top: 1em;
   }
   h2 {
     font-size: 1.125em;
@@ -49,6 +53,8 @@ body {
     ol {
       list-style-type: decimal;
     }
+
+// Star char with indent
     ul li:before {
       content: '\2605 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0';
       margin: 0 -20px;
@@ -90,6 +96,25 @@ body {
 
 .to_right {
   float: right;
+}
+
+/******************************************************************************
+                Device authorization messages
+******************************************************************************/
+.notice, .alert{
+  text-align: center;
+  height: 2.6em;
+  line-height: 2.6em;
+}
+
+.notice {
+  background-color: #DFF0D8;
+  color: #3C763D;
+}
+
+.alert {
+  background-color: #F2DEDE;
+  color: #A94442;
 }
 
 #main_page {

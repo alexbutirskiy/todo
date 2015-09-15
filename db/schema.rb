@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913062509) do
+ActiveRecord::Schema.define(version: 20150915104242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,26 @@ ActiveRecord::Schema.define(version: 20150913062509) do
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
   add_index "tasks", ["status"], name: "index_tasks_on_status", using: :btree
 
+  create_table "todo_items", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "todo_list_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "completed_at"
+  end
+
+  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id", using: :btree
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "todo_lists", ["user_id"], name: "index_todo_lists_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -50,9 +70,13 @@ ActiveRecord::Schema.define(version: 20150913062509) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
 end

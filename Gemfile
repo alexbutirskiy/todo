@@ -22,6 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'devise', '3.5.2'
+gem 'omniauth-facebook'
 
 gem 'pg', '0.15.1'
 
@@ -54,6 +55,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'seed_dump'
+
+  # load environment variables from .env
+  gem 'dotenv-rails'
 end
 
 group :production do

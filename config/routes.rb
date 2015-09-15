@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   root 'projects#index'
   get 'main/index'
   resources :projects, only: [:create, :update, :destroy] do
