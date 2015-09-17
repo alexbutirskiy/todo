@@ -18,3 +18,5 @@
 
 # Ignore secret environment variables
 .env
+
+/public/temp

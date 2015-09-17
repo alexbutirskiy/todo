@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def create
     task = Task.new
     task.start_date = Time.now
-    task.name = task_para[:name] # params[:task][:name]
+    task.name = task_params[:name] # params[:task][:name]
     task.project_id = params[:project_id]
     task.priority = task.project.tasks.count
     task.save!
@@ -21,15 +21,16 @@ class TasksController < ApplicationController
   # TODO: Fix Rubocop wornings
   # Order is like a priority at present
   def update
-    @task.name = task_para[:name] if task_para[:name]
-    @task.status = task_para[:status] if task_para[:status]
-    @task.priority = task_para[:order] if task_para[:order]
-    @task.note = task_para[:note] if task_para[:note]
-    @task.start_date = task_para[:start_date]
-    @task.due_date = task_para[:due_date]
+    @task.name =        task_params[:name]        if task_params[:name]
+    @task.status =      task_params[:status]      if task_params[:status]
+    @task.priority =    task_params[:order]       if task_params[:order]
+    @task.note =        task_params[:note]        if task_params[:note]
+    @task.start_date =  task_params[:start_date]  if task_params[:start_date]
+    @task.due_date =    task_params[:due_date]    if task_params[:due_date]
+    @task.attachment =  task_params[:attachment]  if task_params[:attachment]
     @task.save! if project_valid?
-    prioritize(@task) if task_para[:order]
-
+    prioritize(@task) if task_params[:order]
+byebug
     render_project @task.project_id
   end
 
@@ -45,14 +46,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  def task_para
+  def task_params
     {
       name:       params[:task][:name],
       status:     params[:task][:status],
       order:      params[:task][:order],
       note:       params[:task][:note],
       start_date: params[:task][:start_date],
-      due_date: params[:task][:due_date]
+      due_date:   params[:task][:due_date],
+      attachment: params[:task][:attachment]
     }
   end
 
@@ -63,6 +65,7 @@ class TasksController < ApplicationController
   def render_project(id)
     @project = Project.find(id)
     respond_to do |format|
+      #format.html { render 'projects/update' }
       format.js { render 'projects/update' }
     end
   end

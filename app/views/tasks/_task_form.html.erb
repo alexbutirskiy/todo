@@ -7,3 +7,10 @@
   <%= f.text_field :due_date, placeholder: "Due date", class: "datepicker",
                     value: date_time_convert(@task.due_date) %>
 <% end %>
+
+<%= @task.attachment_file_name %>
+
+<%= form_for( [@task.project, @task], remote: true, authenticity_token: true) do |f| %>
+  <%= f.file_field :attachment %>
+  <%= f.submit "Send" %>
+<% end %>

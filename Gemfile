@@ -14,16 +14,19 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-rails', '4.0.4'
+gem 'jquery-ui-rails', '5.0.5'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '2.5.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
 gem 'devise', '3.5.2'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '2.0.1'
+
+# For documents attachment service
+gem "paperclip", "~> 4.3"
 
 gem 'pg', '0.15.1'
 
@@ -52,8 +55,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'rspec-rails'
+  gem 'spring', '1.3.6'
+  gem 'rspec-rails', '3.3.3'
   gem 'rubocop', require: false
   gem 'seed_dump'
 
