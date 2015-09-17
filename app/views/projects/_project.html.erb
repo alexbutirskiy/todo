@@ -57,15 +57,19 @@
         </td>
 
 <!--  Buttons -->
-        <td><%= button_to '', '#', class: 'prio_task_btn task_edit_btn', 
+        <td>
+          <%= button_to '', '#', class: 'prio_task_btn task_edit_btn', 
                           method: :edit%></td>
-        <td><%= button_to '', '#', class: 'edit_task_btn task_edit_btn', 
-                          method: :edit%></td>
+        <td><%= button_to '', [project, t], 
+                          class: 'edit_task_btn task_edit_btn', 
+                          method: :get, remote: true%>
+        </td>
         <td><%= button_to '', [project, t], 
                           class: 'delete_task_btn task_edit_btn', 
                           method: :delete, remote: true, 
                           data: { confirm: 'Are you sure?' }%></td>
       </tr>
+
     <% end %>
   <% end %>
   </tbody>

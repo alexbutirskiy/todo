@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'projects#index'
   get 'main/index'
   resources :projects, only: [:create, :update, :destroy] do
-    resources :tasks, only: [:create, :update, :destroy]
+    resources :tasks, only: [:show, :create, :update, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

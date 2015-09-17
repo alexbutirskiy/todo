@@ -348,3 +348,80 @@
 //     @include back_blue_sel;
 //   }
 // }
+
+/*******************************************************************************
+                              Modal windows
+*******************************************************************************/
+.ui-dialog {
+  $radius: 10px;
+  margin: 0px 0px 0px 0px !important;
+  padding: 0px 0px 0px 0px !important;
+  border-radius: 0px 0px 0px 0px !important;
+
+  border-bottom-right-radius: $radius !important;
+  border-bottom-left-radius: $radius !important;
+
+  .ui-dialog-titlebar {
+    @include back_blue;
+    border-radius: 0px 0px 0px 0px !important;
+    font: 18px Arial, Times, serif;
+    margin: 0px 0px 0px 0px !important;
+
+    .ui-dialog-title {
+      text-align: center;
+      color: white;
+    }
+
+    .ui-dialog-titlebar-close {
+      display: none;
+    }
+  }
+
+  .ui-dialog-content {
+    border: none;
+
+    form {
+      display: block !important;
+      float: left !important;
+      border: none;
+      font: 14px Arial, Times, serif;
+      color: #555555;
+
+      input {
+        margin: 5px 5px;
+        padding: 5px;
+        width: 98%;
+        display: block !important;
+        float: left !important;
+        border: none;
+        color: #555555;
+      }
+
+      textarea {
+        margin: 5px 5px;
+        padding: 5px;
+        width: 98%;
+        display: block !important;
+        float: left !important;
+        border: none;
+        color: #555555;
+      }
+    }
+  }
+  .ui-dialog-buttonpane {
+    height: 34px;
+    background: linear-gradient(#E0E0E0, #CDCDCD) !important;
+    .ui-dialog-buttonset {
+      background: linear-gradient(#E0E0E0, #CDCDCD);
+      button {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font: 14px Arial, Times, serif;
+        color: white;
+        @include back_green;
+      }
+    }
+  }
+}
+
+//font: 14px Arial, Times, serif;

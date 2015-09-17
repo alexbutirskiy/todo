@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:update, :destroy]
+  before_action :find_task, only: [:show, :update, :destroy]
 
   # TODO: check if project_id is valid
   def create
     task = Task.new
+    task.start_date = Time.now
     task.name = task_para[:name] # params[:task][:name]
     task.project_id = params[:project_id]
     task.priority = task.project.tasks.count
@@ -12,12 +13,20 @@ class TasksController < ApplicationController
     render_project(task.project_id)
   end
 
+  def show
+    # byebug
+    # puts
+  end
+
   # TODO: Fix Rubocop wornings
   # Order is like a priority at present
   def update
     @task.name = task_para[:name] if task_para[:name]
     @task.status = task_para[:status] if task_para[:status]
     @task.priority = task_para[:order] if task_para[:order]
+    @task.note = task_para[:note] if task_para[:note]
+    @task.start_date = task_para[:start_date]
+    @task.due_date = task_para[:due_date]
     @task.save! if project_valid?
     prioritize(@task) if task_para[:order]
 
@@ -38,9 +47,12 @@ class TasksController < ApplicationController
 
   def task_para
     {
-      name: params[:task][:name],
-      status: params[:task][:status],
-      order: params[:task][:order]
+      name:       params[:task][:name],
+      status:     params[:task][:status],
+      order:      params[:task][:order],
+      note:       params[:task][:note],
+      start_date: params[:task][:start_date],
+      due_date: params[:task][:due_date]
     }
   end
 
