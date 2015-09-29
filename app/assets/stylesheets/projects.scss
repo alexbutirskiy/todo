@@ -372,36 +372,25 @@
       color: white;
     }
 
-    .ui-dialog-titlebar-close {
-      display: none;
-    }
+    // .ui-dialog-titlebar-close {
+    //   display: none;
+    // }
   }
 
   .ui-dialog-content {
     border: none;
 
-    form {
-      display: block !important;
+  .edit_task {
       float: left !important;
       border: none;
       font: 14px Arial, Times, serif;
       color: #555555;
+      width: 98%;
 
-      input {
+      input, textarea {
         margin: 5px 5px;
         padding: 5px;
-        width: 98%;
-        display: block !important;
-        float: left !important;
-        border: none;
-        color: #555555;
-      }
-
-      textarea {
-        margin: 5px 5px;
-        padding: 5px;
-        width: 98%;
-        display: block !important;
+        width: 100%;
         float: left !important;
         border: none;
         color: #555555;
@@ -422,6 +411,33 @@
       }
     }
   }
-}
 
-//font: 14px Arial, Times, serif;
+  .new_comment {
+
+      font: 14px Arial, Times, serif;
+      color: #555555;
+
+    display: inline;
+    input {
+      border: none;
+    }
+  }
+
+  .comments {
+
+      font: 14px Arial, Times, serif;
+      color: #555555;
+
+    margin-top: 5px 5px;
+    padding: 5px;
+    border-top: 1px solid #AAAAAA;
+    .button_to {
+      display: inline;
+    }
+    .attachment_btn {
+      height: 2em;
+      width: 2em;
+      color: red;
+    }
+  }
+}

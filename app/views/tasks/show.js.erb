@@ -4,27 +4,37 @@ var wnd_params = {
     autoOpen: false,
     resizable : false,
     width: 600,
-    height: 350,
+    height: "auto",
     show: { effect: "slideDown", duration: 200 },
-    hide: { effect: "slideUp",   duration: 200 },
-    buttons: [ {
-      text: "Cancel",
-      click: function() { $( this ).dialog( "close" ); }
-    }, {
-      text: "Save",
-      click: function() { 
-        $(this).find('form').submit(); 
-        $(this).dialog( "close" );
-      }
-    }]
+    hide: { effect: "slideUp",   duration: 200 }
+
+
+
+    // buttons: [ {
+    //   text: "Cancel",
+    //   click: function() { $( this ).dialog( "close" ); }
+    // }, {
+    //   text: "Save",
+    //   click: function() { 
+    //     $(this).find('form').submit(); 
+    //     $(this).dialog( "close" );
+    //   }
+    // }]
   };
 
 // Put all calls into function to avoid async problem
 (function() {
-  $('#edit_task_wnd').html("<%= j render partial: 'task_form' %>");
+  $('#edit_task_wnd').html("<%= j render partial: 'tasks/task_form' %>");
   $('#edit_task_wnd').dialog().dialog(wnd_params);
   $('#edit_task_wnd').dialog('open');
-  $(function() {
+  //$(function() {
     $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
-  });
+
+    $('.edit_task').change(function() {
+      debugger;
+      $(this).submit();
+    });
+
+  //});
+
 })();

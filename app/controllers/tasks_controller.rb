@@ -14,8 +14,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    # byebug
-    # puts
+    @comment = Comment.new
   end
 
   # TODO: Fix Rubocop wornings
@@ -30,7 +29,7 @@ class TasksController < ApplicationController
     @task.attachment =  task_params[:attachment]  if task_params[:attachment]
     @task.save! if project_valid?
     prioritize(@task) if task_params[:order]
-byebug
+
     render_project @task.project_id
   end
 

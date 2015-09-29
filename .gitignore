@@ -20,3 +20,4 @@
 .env
 
 /public/temp
+/public/system/comments/attachments
