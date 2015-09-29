@@ -417,8 +417,10 @@
       font: 14px Arial, Times, serif;
       color: #555555;
 
+
     display: inline;
     input {
+      height: 32px;
       border: none;
     }
   }
@@ -428,7 +430,7 @@
       font: 14px Arial, Times, serif;
       color: #555555;
 
-    margin-top: 5px 5px;
+    margin: 5px 0px 5px 0px;
     padding: 5px;
     border-top: 1px solid #AAAAAA;
     .button_to {
@@ -440,4 +442,20 @@
       color: red;
     }
   }
+}
+
+
+.text_plain {
+  @include small_btn("txt.png");
+  margin-right: 10px;
+}
+
+.application_msword {
+  @include small_btn("doc.png");
+  margin-right: 10px;
+}
+
+.application_pdf {
+  @include small_btn("pdf.png");
+  margin-right: 10px;
 }

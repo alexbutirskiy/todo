@@ -22,9 +22,13 @@
     <%= "#{cm.txt}"%>
     <% if cm.attachment %>
     <%# byebug %>
-      <%= link_to cm.attachment_file_name, cm.attachment.url, class: "attachment"  %>
       <%= button_to "", project_task_comment_path( @task.project_id, @task.id, cm.id  ), 
                     class: "delete_btn to_right", method: :delete, remote: true %>
+      <%= link_to '',
+                  cm.attachment.url,
+                  class: "to_right " + attachment_class(cm),
+                  title: cm.attachment_file_name,
+                  :target => "_blank" %>
     <% end %>
   </li>
 <% end %>
