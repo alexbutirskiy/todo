@@ -31,6 +31,9 @@ gem 'omniauth-facebook', '2.0.1'
 # For documents attachment service
 gem "paperclip", "~> 4.3"
 
+# Amazon S3 storage
+gem 'aws-sdk', '< 2.0'
+
 gem 'pg', '0.15.1'
 
 group :doc do
