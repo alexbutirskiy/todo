@@ -11,9 +11,9 @@
  * file per style scope.
  *
  *= require reset
- *= require_tree
  *= require jquery-ui/sortable
  *= require jquery-ui/dialog
  *= require jquery-ui/datepicker
+ *= require_tree
  *= require_self
  */

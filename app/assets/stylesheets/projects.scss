@@ -353,47 +353,59 @@
                               Modal windows
 *******************************************************************************/
 .ui-dialog {
-  $radius: 10px;
-  margin: 0px 0px 0px 0px !important;
-  padding: 0px 0px 0px 0px !important;
-  border-radius: 0px 0px 0px 0px !important;
-
-  border-bottom-right-radius: $radius !important;
-  border-bottom-left-radius: $radius !important;
+  padding: 0px;
+  border-radius: 0px 0px 10px 10px;
 
   .ui-dialog-titlebar {
     @include back_blue;
-    border-radius: 0px 0px 0px 0px !important;
+    border-radius: 0px;
     font: 18px Arial, Times, serif;
-    margin: 0px 0px 0px 0px !important;
+    height: 18px;
 
     .ui-dialog-title {
+      margin: 0px;
       text-align: center;
       color: white;
     }
-
-    // .ui-dialog-titlebar-close {
-    //   display: none;
-    // }
   }
 
   .ui-dialog-content {
     border: none;
 
-  .edit_task {
-      float: left !important;
+    .edit_task {
       border: none;
       font: 14px Arial, Times, serif;
       color: #555555;
-      width: 98%;
+      margin: 0 auto;
 
-      input, textarea {
-        margin: 5px 5px;
+      input, textarea, label {
+        margin: 5px auto;
+        border: none; //1px solid;
         padding: 5px;
-        width: 100%;
-        float: left !important;
-        border: none;
         color: #555555;
+        height: 1em;
+      }
+
+      #task_name, #task_note {
+        float: left;
+        clear: both;
+        width: 98%;
+      }
+
+      #task_note {
+        height: 2em;
+      }
+
+      #task_start_date, #task_due_date {
+        width: 83.5%;
+      }
+
+      label {
+        display: block;
+        float: left;
+        clear: left;
+        width: 12%;
+        //border: 1px solid;
       }
     }
   }
@@ -416,12 +428,27 @@
 
       font: 14px Arial, Times, serif;
       color: #555555;
-
+      margin: 5px 0px;
+      padding: 5px;
 
     display: inline;
     input {
-      height: 32px;
-      border: none;
+      width: 90%;
+      height: 24px;
+      border: none;//1px solid;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .attachment_btn {
+      @include small_btn("clip.png");
+      display: block;
+      float: right;
+      width: 40px;
+      height: 24px;
+      border: none;//1px solid red;
     }
   }
 
@@ -436,17 +463,21 @@
     .button_to {
       display: inline;
     }
-    .attachment_btn {
-      height: 2em;
-      width: 2em;
-      color: red;
-    }
   }
 }
 
-
 .text_plain {
   @include small_btn("txt.png");
+  margin-right: 10px;
+}
+
+.application_pdf {
+  @include small_btn("pdf.png");
+  margin-right: 10px;
+}
+
+.application_zip {
+  @include small_btn("zip.png");
   margin-right: 10px;
 }
 
@@ -455,7 +486,13 @@
   margin-right: 10px;
 }
 
-.application_pdf {
-  @include small_btn("pdf.png");
+.application_vnd_ms_excel {
+  @include small_btn("xls.png");
   margin-right: 10px;
 }
+
+.unknown_type {
+  @include small_btn("unknown.png");
+  margin-right: 10px;
+}
+

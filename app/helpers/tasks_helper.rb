@@ -20,7 +20,7 @@ module TasksHelper
       "application_msword"
     when "application/vnd.ms-excel"
       "application_vnd_ms_excel"
-    else "class_unknown"
+    else "unknown_type"
     end
   end
 end

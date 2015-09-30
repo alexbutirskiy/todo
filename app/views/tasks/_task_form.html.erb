@@ -2,9 +2,11 @@
   <%= form_for( [@task.project, @task], remote: true) do |f| %>
     <%= f.text_field :name %>
     <%= f.text_area :note, placeholder: "Note" %>
-    <%= f.text_field :start_date, placeholder: "Start Date", class: "datepicker", 
+    <%= label :task, :start_date, "Start date:" %>
+    <%= f.text_field :start_date, placeholder: "none", class: "datepicker", 
                      value: date_time_convert(@task.start_date) %>
-    <%= f.text_field :due_date, placeholder: "Due date", class: "datepicker",
+    <%= label :task, :due_date, "Due date:" %>
+    <%= f.text_field :due_date, placeholder: "none", class: "datepicker",
                       value: date_time_convert(@task.due_date) %>
   <% end %>
 
@@ -13,7 +15,7 @@
                 authenticity_token: true do |f| %>
     <%= f.text_field :txt, placeholder: "New comment" %>
     <%= f.file_field :attachment, class: "to_right" %>
-    <%#= f.submit "Add" %>
+    <%= label(:comment, :attachment, class: "attachment_btn") {"".html_safe}%>
   <% end %>
 
 <ul>
