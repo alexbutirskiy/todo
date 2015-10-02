@@ -8,8 +8,9 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  username: postgres
-  password:
+  host: testdb.cggcryv64fxx.us-east-1.rds.amazonaws.com
+  username: alexbutirskiy
+  password: vHdemz0fWRBFh7AfR9hi
   encoding: utf8
 
 development:
