@@ -39,6 +39,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  config.web_console.whitelisted_ips = '85.198.151.103'
+
   Paperclip.options[:command_path] = '/usr/bin/convert'
   config.paperclip_defaults = {
     storage: :s3,
