@@ -19,7 +19,11 @@
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "", omniauth_authorize_path(resource_name, provider), class: "#{provider.to_s}_btn" %><br />
-  <% end -%>
+  <ul>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <li class="omi_buttons">
+        <%= link_to "", omniauth_authorize_path(resource_name, provider), class: "#{provider.to_s}_btn" %>
+      </li>
+    <% end -%>
+  </ul>
 <% end -%>

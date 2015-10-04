@@ -27,12 +27,14 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'devise', '3.5.2'
 gem 'omniauth-facebook', '2.0.1'
+gem 'omniauth-github', '1.1.2'
+gem 'omniauth-google-oauth2', '0.2.6' # https://github.com/zquestz/omniauth-google-oauth2/issues/195
 
 # For documents attachment service
 gem "paperclip", "~> 4.3"
 
 # Amazon S3 storage
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '< 2.0'  # https://github.com/thoughtbot/paperclip/issues/1764
 
 gem 'pg', '0.15.1'
 
