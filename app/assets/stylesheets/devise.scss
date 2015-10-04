@@ -4,16 +4,30 @@
 
 @mixin auth_btn($picture) {
   margin-top: 10px;
+  margin-left: 5px;
   background-image: image-url($picture);
   background-repeat: no-repeat;
   border: 1px solid white;
   width: 32px;
   height: 32px;
+  display: inline-block;
   &:hover {
     border: 1px solid blue;
   }
 }
 
+.omi_buttons {
+  display: inline;
+}
+
 .facebook_btn {
   @include auth_btn("facebook_32px.png");
+}
+
+.github_btn {
+  @include auth_btn("GitHub-Mark-32px.png");
+}
+
+.google_oauth2_btn {
+  @include auth_btn("google.png");
 }

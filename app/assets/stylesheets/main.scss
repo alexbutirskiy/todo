@@ -12,7 +12,6 @@ body {
 
   font-family: "Helvetica Neue", Helvetica, serif;
 
-  height: 100%;
   background: -webkit-linear-gradient($back_top, $back_center, $back_bottom) fixed;
   background: -moz-linear-gradient($back_top, $back_center, $back_bottom) fixed;
   background: -ms-linear-gradient($back_top, $back_center, $back_bottom) fixed;
@@ -122,6 +121,7 @@ body {
   margin-right: auto;
   width: 95%;
   text-align: center;
+  min-height: 30em;
 }
 
 #footer p{

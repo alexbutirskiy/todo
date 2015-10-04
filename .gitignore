@@ -19,5 +19,7 @@
 # Ignore secret environment variables
 .env
 
+aws
+
 /public/temp
 /public/system/comments/attachments
