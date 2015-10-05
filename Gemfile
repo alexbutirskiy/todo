@@ -69,7 +69,6 @@ group :development, :test do
   gem 'seed_dump'
 
   # load environment variables from .env
-  gem 'dotenv-rails'
 end
 
 group :production do
@@ -77,4 +76,5 @@ group :production do
 end;
 
 gem 'passenger'
+gem 'dotenv-rails'
 
