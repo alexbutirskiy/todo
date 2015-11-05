@@ -73,6 +73,8 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 group :test do
   gem "faker", "~> 1.4.3"
   gem "capybara", "~> 2.4.3"
