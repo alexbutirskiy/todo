@@ -1,6 +1,7 @@
 ## Ruby Garage test TODO list and SQL task
 [![Build Status](https://travis-ci.org/alexbutirskiy/todo.svg)](https://travis-ci.org/alexbutirskiy/todo)
 [![Code Climate](https://codeclimate.com/github/alexbutirskiy/todo/badges/gpa.svg)](https://codeclimate.com/github/alexbutirskiy/todo)
+[![Test Coverage](https://codeclimate.com/github/alexbutirskiy/todo/badges/coverage.svg)](https://codeclimate.com/github/alexbutirskiy/todo/coverage)
 ---
 
 #### SQL TASK
